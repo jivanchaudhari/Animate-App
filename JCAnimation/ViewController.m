@@ -17,6 +17,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handelPan:)];
+    
+    self.imageBall.userInteractionEnabled = YES;
+    
+    [self.imageBall addGestureRecognizer:panGesture];
+    
+}
+
+-(void)handelPan:(UIPanGestureRecognizer *)gesture {
+    
+    CGRect originalFrame;
+    
+    if ([gesture isKindOfClass:[UIPanGestureRecognizer class]]) {
+        
+        if (gesture.state == UIGestureRecognizerStateBegan) {
+            NSLog(@"State Began");
+            originalFrame = gesture.view.frame;
+            
+        }
+        else if (gesture.state == UIGestureRecognizerStateChanged) {
+            
+            CGPoint delta = [gesture locationInView:self.view];
+            
+            gesture.view.center = delta;
+            
+        }
+        else if (gesture.state == UIGestureRecognizerStateEnded) {
+            
+        }
+    }
+    else {
+        NSLog(@"Pan Gesture Not Detected");
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
