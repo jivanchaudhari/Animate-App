@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *imageBall;
+- (IBAction)zoomOutAction:(id)sender;
+- (IBAction)zoomInAction:(id)sender;
 
+- (IBAction)buttonAction:(id)sender;
 
 @end
 
